@@ -1,0 +1,73 @@
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!--header-css-->
+    {{ partial "header-css.html" . }}
+    {{ if .Site.Params.weii.theme_color }}
+    <meta name="theme-color" content="{{ .Site.Params.weii.theme_color }}">
+    <meta name="msapplication-TileColor" content="{{ .Site.Params.weii.theme_color }}">
+    {{ end }}
+    {{ if .Site.Params.weii.google_analytics }}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.weii.google_analytics }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        var gtag = function () {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        gtag("config", "{{ .Site.Params.weii.google_analytics }}");
+    </script>
+    {{ end }}
+    {{ if .Site.Params.weii.google_verification }}
+    <meta name="google-site-verification" content="{{ .Site.Params.weii.google_verification }}">
+    {{ end }}
+    {{ if .Site.Params.weii.bing_content_verification }}
+    <meta name="msvalidate.01" content="{{ .Site.Params.weii.bing_content_verification }}"/>
+    {{ end }}
+    {{ if .Keywords }}
+    {{ $length := len .Keywords | add -1 }}
+    <meta name="keywords"
+          content="{{ range $index, $element := .Keywords }}{{ $element | safeHTML }}{{ if ne $index $length }}, {{ end }}{{ end }}"/>
+    {{ else if .Site.Params.weii.keywords }}
+    {{ $length := len .Site.Params.weii.keywords | add -1 }}
+    <meta name="keywords"
+          content="{{ range $index, $element := .Site.Params.weii.keywords }}{{ $element | safeHTML }}{{ if ne $index $length }}, {{ end }}{{ end }}"/>
+    {{ end }}
+    <!--favicons-->
+    {{ if .Site.Params.weii.favicons.apple_touch_icon }}
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ .Site.Params.weii.favicons.apple_touch_icon | relURL }}"/>
+    {{ end }}
+    {{ if .Site.Params.weii.favicons.android_chrome_large }}
+    <link rel="icon" type="image/png" sizes="192x192"
+          href="{{ .Site.Params.weii.favicons.android_chrome_large | relURL }}">
+    {{ end }}
+    {{ if .Site.Params.weii.favicons.medium }}
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ .Site.Params.weii.favicons.medium | relURL }}">
+    {{ end }}
+    {{ if .Site.Params.weii.favicons.small }}
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ .Site.Params.weii.favicons.small | relURL }}">
+    {{ end }}
+    {{ if .Site.Params.weii.favicons.safari_pinned_tab }}
+    <link rel="mask-icon" href="{{ .Site.Params.weii.favicons.safari_pinned_tab | relURL }}"
+          color="{{ .Site.Params.weii.theme_color }}">
+    {{ end }}
+    {{ if .Site.Params.weii.favicons.android_manifest }}
+    <link rel="manifest" href="{{ .Site.Params.weii.favicons.android_manifest | relURL }}">
+    {{ end }}
+    {{ if .Site.Params.weii.favicons.ms_browserconfig }}
+    <meta name="msapplication-config" content="{{ .Site.Params.weii.favicons.ms_browserconfig | relURL }}">
+    {{ end }}
+    {{ if .Site.Params.weii.favicons.fallback }}
+    <link rel="shortcut icon" type="image/x-icon" href="{{ .Site.Params.weii.favicons.fallback | relURL }}">
+    {{ end }}
+
+    <title>
+        {{ if .IsHome }}{{ .Site.Params.Title }}{{ else }}{{ .Title }} &middot; {{ .Site.Params.Title }}{{ end }}
+    </title>
+
+    <!--header-js-->
+    {{ partial "header-js.html" . }}
+
+</head>

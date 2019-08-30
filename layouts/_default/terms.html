@@ -1,0 +1,18 @@
+{{ define "main" }}
+<main id="main" class="main">
+    <div class="container">
+        <div class="main-container">
+            <div id="content" class="content">
+                <!--tags-->
+                {{ if eq .Title "Tags" }}
+                {{ partial "tags.html" . }}
+                {{ else }}
+                {{ .Title }} 模板加载失败！
+                {{ end }}
+            </div>
+            <!--sidebar-->
+            {{ partial "sidebar.html" . }}
+        </div>
+    </div>
+</main>
+{{ end }}

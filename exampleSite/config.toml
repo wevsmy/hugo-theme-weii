@@ -1,0 +1,194 @@
+# 主题配置
+theme = "weii"
+baseURL = "https://example.com"
+languageCode = "zh-cn"
+# 默认分页数量
+paginate = 10
+enableEmoji = true
+
+# 站点地图
+[sitemap]
+    changefreq = "monthly"
+    filename = "sitemap.xml"
+    priority = 0.5
+
+# 链接配置与hexo的格式相同,无缝迁移
+[permalinks]
+    posts = "/:year/:month/:day/:filename/"
+    _posts = "/:year/:month/:day/:filename/"
+
+# 分类配置
+[taxonomies]
+    category = "categories"
+    tag = "tags"
+
+# 配置菜单
+[[menu.main]]
+    name = "首页"
+    weight = 10
+    identifier = "home"
+    url = "/"
+    icon = ""
+[[menu.main]]
+    name = "归档"
+    weight = 20
+    identifier = "posts"
+    url = "/posts/"
+[[menu.main]]
+    name = "分类"
+    weight = 30
+    identifier = "categories"
+    url = "/categories/"
+[[menu.main]]
+    name = "标签"
+    weight = 40
+    identifier = "tags"
+    url = "/tags/"
+[[menu.main]]
+    name = "关于"
+    weight = 50
+    identifier = "about"
+    url = "/about/"
+
+[params]
+    # 网站作者
+    author = "wilson"
+    # 网站标题
+    title = "wilson's blog"
+    # 网站二级标题
+    subTitle = "Life is short, you need Python"
+    # 网站描述
+    description = "٩(๑❛ᴗ❛๑)۶"
+
+# weii主题文件配置相关
+[params.weii]
+    # 网站logo
+    logo = "images/logo.png"
+    # 网站创建年份
+    since = "2014"
+    # 头像
+    avatar = "images/avatar.png"
+    # 卜蒜子访问计数
+    busuanzi = true
+    # 网站关键字 site's keywords
+    keywords = ["weii","wevsmy","wilson","Python","Golang","PyQt5","hugo","gohugo"]
+    # 标签颜色
+    tags_color = ["#13af72","#0f233e","#4a0035","#ae985e","#47aaff"]
+    # 全局主题颜色
+    theme_color = "#333333"
+    # https://creativecommons.org/licenses/
+    # by | by-sa | by-nd | by-nc | by-nc-sa | by-nc-nd
+    # 许可证
+    creative_commons = "by-nc-sa"
+    # google分析
+    google_analytics = ""
+    # Google页面验证
+    google_verification = "LY-yWUgw7WEmNuBW7lLOj8jSiKZEVgOCmsisfGWtZCg"
+    # 必应页面验证
+    bing_content_verification = "1A54BC0D6A4D102B72F2A0E9870611FA"
+
+# Transform your image to those favicons in https://realfavicongenerator.net/.
+# 网站icon
+[params.weii.favicons]
+    apple_touch_icon = "favicons/apple-touch-icon.png"
+    android_chrome_large = "favicons/android-chrome-96x96.png"
+    medium = "favicons/favicon-32x32.png"
+    small = "favicons/favicon-16x16.png"
+    safari_pinned_tab = "favicons/safari-pinned-tab.svg"
+    android_manifest = "favicons/site.webmanifest"
+    ms_browserconfig = "favicons/browserconfig.xml"
+    fallback = "favicons/favicon.ico"
+
+# 社交连接
+# 图标 https://www.iconfont.cn
+# icon class
+[[params.weii.social]]
+    name = "GitHub"
+    url = "https://github.com/wevsmy"
+    tip = "O__O "
+    icon_class = "iconfont icongithub-fill"
+[[params.weii.social]]
+    name = "Weibo"
+    url = "https://weibo.com/wevsmy"
+    tip = "O__O "
+    icon_class = "iconfont iconweibo"
+[[params.weii.social]]
+    name = "E-Mail"
+    url = "mailto:wevsmy@gmail.com"
+    tip = "O__O "
+    icon_class = "iconfont iconmail"
+
+# 友情链接
+[[params.weii.blogroll]]
+    name = "wilson's blog"
+    url = "https://blog.weii.ink"
+    tip = "╮(╯▽╰)╭"
+    icon_class = "iconfont iconcode"
+[[params.weii.blogroll]]
+    name = "GitHub"
+    url = "https://github.com/wevsmy"
+    tip = "O__O "
+    icon_class = "iconfont icongithub-fill"
+[[params.weii.blogroll]]
+    name = "友链招租🤪"
+    url = "https://github.com/wevsmy"
+    tip = "O__O "
+    icon_class = "iconfont iconheart"
+
+# 评论
+# Valine.
+# You can get your appid and appkey from https://leancloud.cn
+# more info please open https://valine.js.org
+[params.weii.comment]
+    enable = true
+[params.weii.comment.disqus]
+    enable = false
+    disqusShortname = "wevsmy"
+[params.weii.comment.commentjs]
+    enable = true
+    type = "github"
+    user = "wevsmy"
+    repo = "wevsmy.github.io"
+    client_id = "ded8625909c20b7ae2f7"
+    client_secret = "c9ba27c5047486b4e2e0f8c3001aae33bc15374a"
+[params.weii.comment.valine]
+    enable = true
+    appId = ""
+    appKey = ""
+    placeholder = " "
+    visitor = true
+
+# CDN
+[params.weii.lib_cdn]
+    enable = true
+    weii_iconfont_css = "https://at.alicdn.com/t/font_1354893_l5e2xguigoj.css"
+    bootstrap_min_css = "https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+    jquery_min_js = "https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"
+    bootstrap_min_js = "https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+    busuanzi_pure_mini_js = "https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"
+    canvas_nest_js = ""
+
+# Then set different fonts to different parts here.
+# 自定义图标 https://www.iconfont.cn
+# icon class
+[params.weii.custom]
+    enable = false
+    iconfont_css = "https://at.alicdn.com/t/font_1354893_senbplqdck.css"
+
+# 打赏
+[params.weii.reward]
+    enable = true
+    comment = "🐎🐎还是要放的，万一真有人支持嘞！🤣🤣"
+    wechatpay_qrcode = "images/WeChatPay.png"
+    alipay_qrcode = "images/AliPay.png"
+
+# 特效
+[params.weii.effect]
+    # 头像转动效果
+    animate = false
+    # canvas-nest.js
+    canvas_nest = true
+    # 鼠标点击出现小心心love
+    mouse_click_love = true
+    # 鼠标点击出现“正能量” magic
+    mouse_click_magic = false

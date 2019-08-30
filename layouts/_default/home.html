@@ -1,0 +1,14 @@
+{{ define "main" }}
+<main id="main" class="main">
+    <div class="container">
+        <div class="main-container">
+            <div id="content" class="content">
+                <!--index-->
+                {{ partial "index.html" . }}
+            </div>
+            <!--sidebar-->
+            {{ partial "sidebar.html" . }}
+        </div>
+    </div>
+</main>
+{{ end }}

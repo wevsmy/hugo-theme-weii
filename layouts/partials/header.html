@@ -1,0 +1,91 @@
+<header id="header" class="header" {{ if .Site.Params.weii.theme_color }}
+        style="background: {{ .Site.Params.weii.theme_color }};" {{ end }}>
+    <div class="container">
+        <div class="header-container">
+            <div class="header-title">
+                <h1 class="title">
+                    <a href="/">
+                        {{ .Site.Params.Title }}
+                    </a>
+                </h1>
+                <h2 class="subtitle">
+                    {{ .Site.Params.SubTitle }}
+                </h2>
+            </div>
+            {{ if .Site.Params.weii.logo }}
+            <div class="logo">
+                <img src="{{ .Site.Params.weii.logo | relURL }}" alt="logo">
+            </div>
+            {{ end }}
+        </div>
+
+        <!-- Large modal -->
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Modal title</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>One fine body&hellip;</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- 导航条 -->
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!--                    <a class="navbar-brand" href="#" data-toggle="modal" data-target=".bs-example-modal-lg">导航</a>-->
+                    <a class="navbar-brand" href="#" data-toggle="tooltip" data-placement="top"
+                       title="( ⊙ o ⊙ )啊！">导航</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        {{ range $k,$v := .Site.Menus.main }}
+                        <li><a href="{{ $v.URL }}">
+                            {{ if eq $v.Identifier "home"}}
+                            <i class="iconfont iconhome"></i>
+                            {{ else if eq $v.Identifier "posts"}}
+                            <i class="iconfont iconfolder-open"></i>
+                            {{ else if eq $v.Identifier "categories"}}
+                            <i class="iconfont iconbook"></i>
+                            {{ else if eq $v.Identifier "tags"}}
+                            <i class="iconfont icontags"></i>
+                            {{ else if eq $v.Identifier "about"}}
+                            <i class="iconfont iconsolution"></i>
+                            {{ end }}
+                            <span class="menu-text">{{ $v.Name }}</span>
+                        </a></li>
+                        {{ end }}
+                    </ul>
+                    <div class="navbar-form navbar-right">
+                        <div class="form-group">
+                            <input type="search" id="search-input" name="q" results="0"
+                                   placeholder="(ฅ´ω`ฅ)" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="search-result-box" id="search-result"></div>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    </div>
+</header>

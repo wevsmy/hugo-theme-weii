@@ -1,0 +1,45 @@
+<!--文章详情页-->
+<div id="index" class="index page">
+
+    <div class="panel panel-default post-panel">
+        <div class="panel-heading post-head">
+            <div class="post-title"><h2><a href='{{ .RelPermalink }}'>{{ .Title }}</a></h2></div>
+            <div class="post-meta"><span>{{ .Date.Format "2006.01.02" }}</span></div>
+        </div>
+        <div class="panel-body post-body">
+            <div class="post-post" id="post-post">
+
+                <div class="post_content markdown">{{ .Content }}</div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<nav aria-label="Page navigation">
+    <ul class="pager">
+        {{if .PrevPage}}
+        <li class="previous"><a href="{{.PrevPage.RelPermalink | relURL }}">
+            <span aria-hidden="true">&larr;</span>{{ .PrevPage.Title }}</a></li>
+        {{ else }}
+        <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> 没有上一页</a></li>
+        {{end}}
+
+        {{if .NextPage}}
+        <li class="next"><a href="{{.NextPage.RelPermalink | relURL }}">
+            {{ .NextPage.Title }}<span aria-hidden="true">&rarr;</span></a></li>
+        {{ else }}
+        <li class="next disabled"><a href="#">没有下一页<span aria-hidden="true">&rarr;</span></a></li>
+        {{end}}
+    </ul>
+</nav>
+
+<!--reward-->
+{{ partial "reward.html" . }}
+
+
+<!--comment-->
+{{ partial "comment.html" . }}
