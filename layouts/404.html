@@ -1,11 +1,48 @@
 {{ define "main" }}
+<!--404-->
 <main id="main" class="main">
     <div class="container">
         <div class="main-container">
             <div id="content" class="content">
-                <!--404-->
-                {{ .Title }}
-                404 kakaasdasd
+                <div class="panel panel-default post-panel">
+                    <div class="panel-heading post-head">
+                        <div class="post-title">
+                            <h2>
+                                <a href='/' data-toggle="tooltip" data-placement="top" title="(๑•́ ₃•̀๑)">
+                                    {{ .Title }}
+                                </a>
+                            </h2>
+                        </div>
+                    </div>
+
+                    <div class="panel-body post-body">
+                        <div class="content-404" id="content-404">
+                            <div class="content-span">
+                                <span>
+                                将在
+                                <i id="jumpTo">5</i>秒后,自动转入
+                                <a href="/">首页</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script type="text/javascript">
+                    window.onload = function () {
+                        countDown(10, '/')
+                    };
+
+                    function countDown(secs, url) {
+                        var jumpTo = document.getElementById('jumpTo');
+                        jumpTo.innerHTML = secs;
+                        if (--secs > 0) {
+                            setTimeout("countDown(" + secs + ",'" + url + "')", 1000);
+                        } else {
+                            location.href = url;
+                        }
+                    }
+                </script>
             </div>
             <!--sidebar-->
             {{ partial "sidebar.html" . }}

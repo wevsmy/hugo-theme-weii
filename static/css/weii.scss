@@ -144,7 +144,7 @@
           }
 
           .post-post {
-            
+
             img {
               width: 100%;
             }
@@ -316,6 +316,20 @@
         }
       }
 
+      .content-404 {
+        background: url("/images/404.jpg");
+        width: 100%;
+        padding: 0;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        -moz-background-size: 100% 100%;
+
+        .content-span {
+          text-align: center;
+          padding-top: 34%;
+        }
+
+      }
     }
   }
 
@@ -462,6 +476,7 @@
       }
     }
   }
+
 }
 
 

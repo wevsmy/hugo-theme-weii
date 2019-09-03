@@ -160,7 +160,7 @@ enableEmoji = true
 # CDN
 [params.weii.lib_cdn]
     enable = true
-    weii_iconfont_css = "https://at.alicdn.com/t/font_1354893_l5e2xguigoj.css"
+    weii_iconfont_css = "https://at.alicdn.com/t/font_1354893_48p2lem7d2u.css"
     bootstrap_min_css = "https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
     jquery_min_js = "https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"
     bootstrap_min_js = "https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
