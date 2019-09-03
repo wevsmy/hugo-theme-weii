@@ -1,40 +1,35 @@
 <!--标签的标签页-->
-<div id="index" class="index page">
-
-    {{ range $taxonomyname, $taxonomy := .Site.Taxonomies }}
-    {{ with $taxonomy }}
-    <div class="panel panel-default post-panel">
-        <div class="panel-heading post-head">
-            <div class="post-title">
-                <h2><a href="{{ "/" | relLangURL}}{{ $taxonomyname | urlize }}">{{ $taxonomyname }}
-                    标签</a></h2></div>
-            <div class="post-meta"><span>你已经创建了 {{ len $taxonomy}} 个标签！</span></div>
-        </div>
-
-
-        <div class="panel-body post-body">
-            <div class="post-tags">
-
-                {{ range $key, $value := $taxonomy }}
-                {{ if ($key) }}
-                <a href="{{ "/" | relLangURL}}{{ $taxonomyname | urlize }}{{ "/" | relLangURL}}{{ $key | urlize }}"
-                   title="{{ len $value }}个内容"
-                   data-toggle="tooltip" data-placement="top">
-                    {{ $key }}
-                </a>
-                {{ end }}
-                {{ end }}
-            </div>
-        </div>
-
-
+{{ range $taxonomyname, $taxonomy := .Site.Taxonomies }}
+{{ with $taxonomy }}
+<div class="panel panel-default post-panel">
+    <div class="panel-heading post-head">
+        <div class="post-title">
+            <h2><a href="{{ "/" | relLangURL}}{{ $taxonomyname | urlize }}">{{ $taxonomyname }}
+                标签</a></h2></div>
+        <div class="post-meta"><span>你已经创建了 {{ len $taxonomy}} 个标签！</span></div>
     </div>
 
-    {{ end }}
-    {{ end }}
+    <div class="panel-body post-body">
+        <div class="post-tags">
+
+            {{ range $key, $value := $taxonomy }}
+            {{ if ($key) }}
+            <a href="{{ "/" | relLangURL}}{{ $taxonomyname | urlize }}{{ "/" | relLangURL}}{{ $key | urlize }}"
+            title="{{ len $value }}个内容"
+            data-toggle="tooltip" data-placement="top">
+            {{ $key }}
+            </a>
+            {{ end }}
+            {{ end }}
+        </div>
+    </div>
 
 
 </div>
+
+{{ end }}
+{{ end }}
+
 <script type="text/javascript">
     $(document).ready(function () {
         var tags_a = $(".post-tags").find("a");

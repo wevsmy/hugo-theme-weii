@@ -18,6 +18,16 @@
 $ git clone https://github.com/wevsmy/hugo-theme-weii themes/weii
 ```
 
+## 主题调试
+```bash
+$ hugo server --theme=weii --buildDrafts --config=themes/weii/exampleSite/config.toml --bind 0.0.0.0
+```
+
+## 部署
+```bash
+$ hugo --theme=weii --baseUrl="http://wevsmy.github.io/"
+```
+
 本主题提供了一个示例配置文件是 [`exampleSite`](./exampleSite) 目录里的 [`config.toml`](./exampleSite/config.toml) 文件。
 
 配置文件中对大部分配置都有详细的注释说明，复制该文件到站点目录下，根据自己的情况修改即可。

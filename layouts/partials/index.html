@@ -1,16 +1,14 @@
-<div id="index" class="index page">
+<!--首页-->
+{{ range .Paginator.Pages }}
 
-    {{ range .Paginator.Pages }}
-
-
-    <div class="panel panel-default post-panel">
-        <div class="panel-heading post-head">
-            <div class="post-title">
-                <a href="{{ .RelPermalink | relURL }}">
-                    <h2>{{ .Title }}</h2>
-                </a>
-            </div>
-            <div class="post-meta">
+<div class="panel panel-default post-panel">
+    <div class="panel-heading post-head">
+        <div class="post-title">
+            <a href="{{ .RelPermalink | relURL }}">
+                <h2>{{ .Title }}</h2>
+            </a>
+        </div>
+        <div class="post-meta">
 
                 <span class="post-date">
                      <i class="iconfont iconcalendar-check"></i>
@@ -18,25 +16,25 @@
                 </span>
 
 
-                <span class="post-wordCount">
+            <span class="post-wordCount">
                     <span class="post-meta-divider divider">|</span>
                     <i class="iconfont iconfile-word"></i>
                     <span>{{ .FuzzyWordCount }} words</span>
                 </span>
 
-                <span class="post-readingTime">
+            <span class="post-readingTime">
                     <span class="post-meta-divider divider">|</span>
                      <i class="iconfont iconField-time"></i>
                     <span>{{ .ReadingTime }} minute</span>
                 </span>
 
-                {{ if .Site.Params.weii.comment.enable }}
-                {{ if .Site.Params.weii.comment.disqus.enable }}
+            {{ if .Site.Params.weii.comment.enable }}
+            {{ if .Site.Params.weii.comment.disqus.enable }}
 
-                <script id="dsq-count-scr"
-                        src="//{{ .Site.Params.weii.comment.disqus.disqusShortname }}.disqus.com/count.js"
-                        async></script>
-                <span class="post-comment-count">
+            <script id="dsq-count-scr"
+                    src="//{{ .Site.Params.weii.comment.disqus.disqusShortname }}.disqus.com/count.js"
+                    async></script>
+            <span class="post-comment-count">
                 <span class="post-meta-divider divider">|</span>
                 <i class="iconfont iconcomment"></i>
                 <span><a href="{{ .RelPermalink | relURL }}#comments" itemprop="discussionUrl">
@@ -44,10 +42,10 @@
                       itemprop="commentCount">comments</span></a></span>
                 </span>
 
-                {{ else if .Site.Params.weii.comment.commentjs.enable }}
+            {{ else if .Site.Params.weii.comment.commentjs.enable }}
 
 
-                <span class="post-comment-count">
+            <span class="post-comment-count">
                 <span class="post-meta-divider divider">|</span>
                 <i class="iconfont iconcomment"></i>
                 <span>
@@ -59,23 +57,23 @@
                 </span>
                 </span>
 
-                <script type="text/javascript">
-                    $.ajax({
-                        url: 'https://api.github.com/repos/' + "{{ .Site.Params.weii.comment.commentjs.user }}/{{ .Site.Params.weii.comment.commentjs.repo }}/" + 'issues?client_id=' + "{{ .Site.Params.weii.comment.commentjs.client_id }}" + '&client_secret=' + "{{ .Site.Params.weii.comment.commentjs.client_secret }}",
-                        dataType: 'json',
-                        cache: false,
-                        crossDomain: true,
-                        success: function success(page_comments) {
-                            for (var i = 0; i < page_comments.length; ++i) {
-                                $("#" + page_comments[i].title).text(page_comments[i].comments + 1)
-                            }
+            <script type="text/javascript">
+                $.ajax({
+                    url: 'https://api.github.com/repos/' + "{{ .Site.Params.weii.comment.commentjs.user }}/{{ .Site.Params.weii.comment.commentjs.repo }}/" + 'issues?client_id=' + "{{ .Site.Params.weii.comment.commentjs.client_id }}" + '&client_secret=' + "{{ .Site.Params.weii.comment.commentjs.client_secret }}",
+                    dataType: 'json',
+                    cache: false,
+                    crossDomain: true,
+                    success: function success(page_comments) {
+                        for (var i = 0; i < page_comments.length; ++i) {
+                            $("#" + page_comments[i].title).text(page_comments[i].comments + 1)
                         }
-                    });
-                </script>
+                    }
+                });
+            </script>
 
-                {{ else if .Site.Params.weii.comment.valine.enable }}
+            {{ else if .Site.Params.weii.comment.valine.enable }}
 
-                <span class="post-comment-count">
+            <span class="post-comment-count">
                 <span class="post-meta-divider divider">|</span>
                 <i class="iconfont iconcomment"></i>
                 <span>
@@ -87,46 +85,44 @@
                 </span>
                 </span>
 
-                {{ end }}
-                {{ end }}
-
-            </div>
+            {{ end }}
+            {{ end }}
 
         </div>
-        <div class="panel-body post-body">
-            <div class="post-index">
-                <p>{{ .Summary }}......</p>
-                {{ if .Truncated }}
-                <div class="post-read-more">
-                    <a href="{{ .RelPermalink | relURL }}">阅读更多</a>
-                </div>
-                {{ end }}
-            </div>
-        </div>
 
-        {{ $t := .Site.Params.weii.tags_color }}
-        {{ $tc := "#777" }}
-        {{ with .Params.tags }}
-        <div class="panel-footer post-footer">
-            {{ range $k, $v := . }}
-            {{ range $k1, $v1 := $t }}{{ if eq $k $k1 }}{{ $tc = $v1 }}{{ end }}{{ end }}
-            {{ $url := "tags" | relURL}}
-            <a href="{{ $url }}/{{ . | urlize }}/">
+    </div>
+    <div class="panel-body post-body">
+        <div class="post-index">
+            <p>{{ .Summary }}......</p>
+            {{ if .Truncated }}
+            <div class="post-read-more">
+                <a href="{{ .RelPermalink | relURL }}">阅读更多</a>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+
+    {{ $t := .Site.Params.weii.tags_color }}
+    {{ $tc := "#777" }}
+    {{ with .Params.tags }}
+    <div class="panel-footer post-footer">
+        {{ range $k, $v := . }}
+        {{ range $k1, $v1 := $t }}{{ if eq $k $k1 }}{{ $tc = $v1 }}{{ end }}{{ end }}
+        {{ $url := "tags" | relURL}}
+        <a href="{{ $url }}/{{ . | urlize }}/">
                 <span class="label label-default post-label" style="background: {{ $tc }}">
                     <i class="iconfont icontags"></i>{{ $v }}
                 </span>
-            </a>
-            {{ end }}
-        </div>
+        </a>
         {{ end }}
-
     </div>
-
     {{ end }}
 
-
-    <nav class="post-pagination">
-        {{ template "_internal/pagination.html" . }}
-    </nav>
-
 </div>
+
+{{ end }}
+
+<!--首页分页器-->
+<nav class="post-pagination">
+    {{ template "_internal/pagination.html" . }}
+</nav>

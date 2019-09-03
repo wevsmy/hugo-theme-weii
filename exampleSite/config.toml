@@ -15,7 +15,6 @@ enableEmoji = true
 # 链接配置与hexo的格式相同,无缝迁移
 [permalinks]
     posts = "/:year/:month/:day/:filename/"
-    _posts = "/:year/:month/:day/:filename/"
 
 # 分类配置
 [taxonomies]
