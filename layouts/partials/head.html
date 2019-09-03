@@ -10,15 +10,33 @@
     <meta name="msapplication-TileColor" content="{{ .Site.Params.weii.theme_color }}">
     {{ end }}
     <!--verification-->
+    <!--baidu_analytics-->
+    {{ if .Site.Params.weii.baidu_analytics }}
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?{{ .Site.Params.weii.baidu_analytics }}";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+    {{ end }}
+    <!--google_analytics-->
     {{ if .Site.Params.weii.google_analytics }}
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.weii.google_analytics }}"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', '{{ .Site.Params.weii.google_analytics }}');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', '{{ .Site.Params.weii.google_analytics }}');
     </script>
     {{ end }}
     {{ if .Site.Params.weii.google_verification }}

@@ -80,6 +80,8 @@ enableRobotsTXT = true
     # by | by-sa | by-nd | by-nc | by-nc-sa | by-nc-nd
     # 许可证
     creative_commons = "by-nc-sa"
+    # baidu分析 为空即不使用
+    baidu_analytics = "cd78dad41ad2de68dddcbff91c704ce4"
     # google分析
     google_analytics = "UA-146915278-1"
     # Google页面验证
@@ -190,5 +192,5 @@ enableRobotsTXT = true
     canvas_nest = true
     # 鼠标点击出现小心心love
     mouse_click_love = true
-    # 鼠标点击出现“正能量” magic
+    # 鼠标点击出现“正能量”magic
     mouse_click_magic = false
