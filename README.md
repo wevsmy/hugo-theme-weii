@@ -25,7 +25,7 @@ $ hugo server --theme=weii --buildDrafts --config=themes/weii/exampleSite/config
 
 ## 部署
 ```bash
-$ hugo --theme=weii --baseUrl="http://wevsmy.github.io/"
+$ hugo --theme=weii --baseUrl="https://wevsmy.github.io/"
 ```
 
 本主题提供了一个示例配置文件是 [`exampleSite`](./exampleSite) 目录里的 [`config.toml`](./exampleSite/config.toml) 文件。

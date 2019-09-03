@@ -1,10 +1,11 @@
 # 主题配置
 theme = "weii"
-baseURL = "https://example.com"
+baseURL = "https://blog.weii.ink"
 languageCode = "zh-cn"
 # 默认分页数量
 paginate = 10
 enableEmoji = true
+enableRobotsTXT = true
 
 # 站点地图
 [sitemap]
@@ -80,7 +81,7 @@ enableEmoji = true
     # 许可证
     creative_commons = "by-nc-sa"
     # google分析
-    google_analytics = ""
+    google_analytics = "UA-146915278-1"
     # Google页面验证
     google_verification = "LY-yWUgw7WEmNuBW7lLOj8jSiKZEVgOCmsisfGWtZCg"
     # 必应页面验证
