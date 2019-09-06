@@ -109,11 +109,11 @@
         {{ range $k, $v := . }}
         {{ range $k1, $v1 := $t }}{{ if eq $k $k1 }}{{ $tc = $v1 }}{{ end }}{{ end }}
         {{ $url := "tags" | relURL}}
-        <a href="{{ $url }}/{{ . | urlize }}/">
-                <span class="label label-default post-label" style="background: {{ $tc }}">
-                    <i class="iconfont icontags"></i>{{ $v }}
-                </span>
-        </a>
+        <span class="label label-default post-label" style="background: {{ $tc }}">
+            <a href="{{ $url }}/{{ . | urlize }}/">
+                <i class="iconfont icontags"></i> {{ $v }}
+            </a>
+        </span>
         {{ end }}
     </div>
     {{ end }}
