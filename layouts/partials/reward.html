@@ -1,16 +1,14 @@
 {{ if .Site.Params.weii.reward.enable }}
-
 <div class="reward" id="reward">
 
     <div class="reward-comment">
          <span> {{ .Site.Params.weii.reward.comment }}🤣</span>
     </div>
+
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary btn-lg reward-button" data-toggle="modal" data-target="#myModal">
         支持一下
     </button>
-
-
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -51,7 +49,6 @@
             </div>
         </div>
     </div>
-
 
 </div>
 {{ end }}

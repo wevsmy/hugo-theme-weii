@@ -1,40 +1,45 @@
 <!--分类标签页-->
 <div class="panel panel-default post-panel">
-        <div class="panel-heading post-head">
-            <div class="post-title"><h2><a href='{{ .RelPermalink }}'>{{ .Title }} 分类</a></h2></div>
-            <div class="post-meta"><span>你已经创建了 {{ len .Site.Taxonomies }} 个分类！</span></div>
-        </div>
+    <div class="panel-heading post-head">
+        <div class="post-title"><h2><a href='{{ .RelPermalink }}'>{{ .Title }} 分类</a></h2></div>
+        <div class="post-meta"><span>你已经创建了 {{ len .Site.Taxonomies }} 个分类！</span></div>
     </div>
+</div>
     ​
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-        {{ range $taxonomyname, $taxonomy := .Site.Taxonomies }}
-        <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="heading{{ $taxonomyname }}">
-                <h4 class="panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                       href="#collapse{{ $taxonomyname }}" aria-expanded="false"
-                       aria-controls="collapse{{ $taxonomyname }}">
-                        {{ $taxonomyname }}
-                        {{ with $taxonomy }}
-                        <a href="{{ "/" | relLangURL}}{{ $taxonomyname | urlize }}">
-                        <span class="badge" style="float: right;">{{ len $taxonomy}}</span>
-                    </a>
-                    {{ end }}
-                    </a>
+    {{ range $taxonomyname, $taxonomy := .Site.Taxonomies }}
+    <div class="panel panel-default post-panel">
+        <div class="panel-heading" role="tab" id="heading{{ $taxonomyname }}"
+             data-toggle="collapse" data-parent="#accordion"
+             href="#collapse{{ $taxonomyname }}" aria-expanded="false"
+             aria-controls="collapse{{ $taxonomyname }}">
+                <h4 class="panel-title list-group-item">
+                {{ $taxonomyname }}
+                {{ with $taxonomy }}
+                <span class="badge">{{ len $taxonomy}}</span>
+                {{ end }}
                 </h4>
-            </div>
-            <div id="collapse{{ $taxonomyname }}" class="panel-collapse collapse" role="tabpanel"
-                 aria-labelledby="heading{{ $taxonomyname }}">
-                <div class="panel-body">
-                    {{ range $key, $value := $taxonomy }}
-                    <a href="{{ "/" | relLangURL}}{{ $taxonomyname | urlize }}{{ "/" | relLangURL}}{{ $key | urlize }}"
-                    class="list-group-item">
-                    {{ $key }}
-                    <span class="badge">{{ len $value }}</span>
-                    </a>
-                    {{ end }}
-                </div>
+        </div>
+        <div id="collapse{{ $taxonomyname }}" class="panel-collapse collapse" role="tabpanel"
+             aria-labelledby="heading{{ $taxonomyname }}">
+            <div class="panel-body">
+                <a href="{{ "/" | relLangURL}}{{ $taxonomyname | urlize }}"
+                data-toggle="tooltip" data-placement="top" title="๑乛◡乛๑ 点一下，玩一年！"
+                class="list-group-item" style="background-color: #fafafa">
+                {{ $taxonomyname }}
+                {{ with $taxonomy }}
+                <span class="badge">{{ len $taxonomy}}</span>
+                {{ end }}
+                </a>
+                {{ range $key, $value := $taxonomy }}
+                <a href="{{ "/" | relLangURL}}{{ $taxonomyname | urlize }}{{ "/" | relLangURL}}{{ $key | urlize }}"
+                class="list-group-item">
+                {{ $key }}
+                <span class="badge">{{ len $value }}</span>
+                </a>
+                {{ end }}
             </div>
         </div>
-        {{ end }}
     </div>
+    {{ end }}
+</div>
