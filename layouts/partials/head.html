@@ -61,9 +61,9 @@
     <meta name="description"
           content="{{ range $index, $element := .Paginator.Pages }}{{ .Title }}{{ if ne $index $length }}, {{ end }}{{ end }}"/>
     {{ else if .IsPage }}
-    <meta name="description" content="{{ .Summary }}">
+    <meta name="description" content="{{ if .Description }}{{ .Description }} | {{ .Summary }}{{ else }}{{ .Summary }}{{ end }}">
     {{ else }}
-    <meta name="description" content="{{ .Title }}">
+    <meta name="description" content="{{ if .Description }}{{ .Description }} | {{ .Title }}{{ else }}{{ .Title }}{{ end }}">
     {{ end }}
     <!--favicons-->
     {{ if .Site.Params.weii.favicons.apple_touch_icon }}
