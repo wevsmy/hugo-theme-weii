@@ -102,14 +102,11 @@
         </div>
     </div>
 
-    {{ $t := .Site.Params.weii.tags_color }}
-    {{ $tc := "#777" }}
     {{ with .Params.tags }}
     <div class="panel-footer post-footer">
         {{ range $k, $v := . }}
-        {{ range $k1, $v1 := $t }}{{ if eq $k $k1 }}{{ $tc = $v1 }}{{ end }}{{ end }}
         {{ $url := "tags" | relURL}}
-        <span class="label label-default post-label" style="background: {{ $tc }}">
+        <span class="label label-default post-label" >
             <a href="{{ $url }}/{{ . | urlize }}/">
                 <i class="iconfont icontags"></i> {{ $v }}
             </a>
@@ -126,3 +123,32 @@
 <nav class="post-pagination">
     {{ template "_internal/pagination.html" . }}
 </nav>
+
+{{ if .Site.Params.weii.tags_color }}
+<script type="text/javascript">
+    $(document).ready(function () {
+        var tags_span = $(".post-footer").find("span");
+        tags_span.each(function () {
+            var tags_color_rand = parseInt(Math.random()*{{- len .Site.Params.weii.tags_color -}});
+            var tags_color_array=new Array({{- len .Site.Params.weii.tags_color -}});
+            {{ range $k, $v := .Site.Params.weii.tags_color }}
+            tags_color_array[{{- $k -}}]={{- $v -}};
+            {{ end }}
+            $(this).css("background-color",tags_color_array[tags_color_rand]);
+
+            {{ if .Site.Params.weii.tags_color_hover }}
+            var tags_color_hover_rand = parseInt(Math.random()*{{- len .Site.Params.weii.tags_color_hover -}});
+            var tags_color_hover_array=new Array({{- len .Site.Params.weii.tags_color_hover -}});
+            {{ range $k, $v := .Site.Params.weii.tags_color_hover }}
+            tags_color_hover_array[{{- $k -}}]={{- $v -}};
+            {{ end }}
+            $(this).hover(function(){
+                $(this).css("background-color",tags_color_hover_array[tags_color_hover_rand]);
+            },function(){
+                $(this).css("background-color",tags_color_array[tags_color_rand]);
+            });
+            {{ end }}
+        });
+    });
+</script>
+{{ end }}
