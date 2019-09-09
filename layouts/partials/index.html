@@ -62,7 +62,7 @@
                 <span>
                     <a href="{{ .RelPermalink | relURL }}#comments">
                         <span class="post-comment-count">
-                            <span id="{{ .UniqueID }}">0</span> comments
+                            <span id="{{ .File.UniqueID }}">0</span> comments
                         </span>
                     </a>
                 </span>
@@ -183,10 +183,10 @@
             $("#" + a).text(page_comments.total_count)
         }
     });
-    }
-    {{ range $S.Paginator.Pages }}
-    getIssuesComments({{.Title}},{{ .UniqueID }})
-    {{ end }}
+    };
+    {{- range $S.Paginator.Pages -}}
+    getIssuesComments({{.Title}},{{ .File.UniqueID }});
+    {{- end -}}
 </script>
 {{ else if .Site.Params.weii.comment.valine.enable }}
 <script type="text/javascript">
