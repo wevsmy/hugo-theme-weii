@@ -10,66 +10,63 @@
         </div>
         <div class="post-meta">
 
-                <span class="post-date">
-                     <i class="iconfont iconcalendar-check"></i>
-                    <span>{{ .Lastmod.Format "2006.01.02" }} update</span>
-                </span>
-
+            <span class="post-date">
+                <i class="iconfont iconcalendar-check"></i>
+                <span>{{ .Lastmod.Format "2006.01.02" }} update</span>
+            </span>
 
             <span class="post-wordCount">
-                    <span class="post-meta-divider divider">|</span>
-                    <i class="iconfont iconfile-word"></i>
-                    <span>{{ .FuzzyWordCount }} words</span>
-                </span>
+                <span class="post-meta-divider divider">|</span>
+                <i class="iconfont iconfile-word"></i>
+                <span>{{ .FuzzyWordCount }} words</span>
+            </span>
 
             <span class="post-readingTime">
-                    <span class="post-meta-divider divider">|</span>
-                     <i class="iconfont iconField-time"></i>
-                    <span>{{ .ReadingTime }} minute</span>
-                </span>
+                <span class="post-meta-divider divider">|</span>
+                <i class="iconfont iconField-time"></i>
+                <span>{{ .ReadingTime }} minute</span>
+            </span>
 
             {{ if .Site.Params.weii.comment.enable }}
             {{ if .Site.Params.weii.comment.disqus.enable }}
-
-            <script id="dsq-count-scr"
-                    src="//{{ .Site.Params.weii.comment.disqus.disqusShortname }}.disqus.com/count.js"
-                    async></script>
-            <span class="post-comment-count">
-                <span class="post-meta-divider divider">|</span>
-                <i class="iconfont iconcomment"></i>
-                <span><a href="{{ .RelPermalink | relURL }}#comments" itemprop="discussionUrl">
-                <span class="post-comment-count disqus-comment-count" data-disqus-identifier="{{ .Title }}"
-                      itemprop="commentCount">comments</span></a></span>
-                </span>
-
-            {{ else if .Site.Params.weii.comment.commentjs.enable }}
-
 
             <span class="post-comment-count">
                 <span class="post-meta-divider divider">|</span>
                 <i class="iconfont iconcomment"></i>
                 <span>
-                <a href="{{ .RelPermalink | relURL }}#comments">
-                <span class="post-comment-count">
-                <span id="{{ .Title }}">0</span> comments
+                    <a href="{{ .RelPermalink | relURL }}#comments" itemprop="discussionUrl">
+                    <span class="post-comment-count disqus-comment-count" data-disqus-identifier="{{ .Title }}"
+                      itemprop="commentCount">comments</span>
+                    </a>
                 </span>
-                </a>
-                </span>
-                </span>
+            </span>
 
-            <script type="text/javascript">
-                $.ajax({
-                    url: 'https://api.github.com/repos/' + "{{ .Site.Params.weii.comment.commentjs.user }}/{{ .Site.Params.weii.comment.commentjs.repo }}/" + 'issues?client_id=' + "{{ .Site.Params.weii.comment.commentjs.client_id }}" + '&client_secret=' + "{{ .Site.Params.weii.comment.commentjs.client_secret }}",
-                    dataType: 'json',
-                    cache: false,
-                    crossDomain: true,
-                    success: function success(page_comments) {
-                        for (var i = 0; i < page_comments.length; ++i) {
-                            $("#" + page_comments[i].title).text(page_comments[i].comments + 1)
-                        }
-                    }
-                });
-            </script>
+            {{ else if .Site.Params.weii.comment.commentjs.enable }}
+
+            <span class="post-comment-count">
+                <span class="post-meta-divider divider">|</span>
+                <i class="iconfont iconcomment"></i>
+                <span>
+                    <a href="{{ .RelPermalink | relURL }}#comments">
+                        <span class="post-comment-count">
+                            <span id="{{ .Title }}">0</span> comments
+                        </span>
+                    </a>
+                </span>
+            </span>
+            {{ else if .Site.Params.weii.comment.utterances.enable }}
+
+            <span class="post-comment-count">
+                <span class="post-meta-divider divider">|</span>
+                <i class="iconfont iconcomment"></i>
+                <span>
+                    <a href="{{ .RelPermalink | relURL }}#comments">
+                        <span class="post-comment-count">
+                            <span id="{{ .UniqueID }}">0</span> comments
+                        </span>
+                    </a>
+                </span>
+            </span>
 
             {{ else if .Site.Params.weii.comment.valine.enable }}
 
@@ -77,13 +74,13 @@
                 <span class="post-meta-divider divider">|</span>
                 <i class="iconfont iconcomment"></i>
                 <span>
-                <a href="{{ .RelPermalink | relURL }}#comments" itemprop="discussionUrl">
-                <span class="post-comment-count">
-                <span></span> comments
+                    <a href="{{ .RelPermalink | relURL }}#comments" itemprop="discussionUrl">
+                        <span class="post-comment-count">
+                            <span></span> comments
+                        </span>
+                    </a>
                 </span>
-                </a>
-                </span>
-                </span>
+            </span>
 
             {{ end }}
             {{ end }}
@@ -124,6 +121,7 @@
     {{ template "_internal/pagination.html" . }}
 </nav>
 
+<!--首页随机标签颜色JS-->
 {{ if .Site.Params.weii.tags_color }}
 <script type="text/javascript">
     $(document).ready(function () {
@@ -151,4 +149,47 @@
         });
     });
 </script>
+{{ end }}
+
+<!--comment JS-->
+{{ $S := . }}
+{{ if .Site.Params.weii.comment.enable }}
+{{ if .Site.Params.weii.comment.disqus.enable }}
+<script id="dsq-count-scr" src="//{{ .Site.Params.weii.comment.disqus.disqusShortname }}.disqus.com/count.js" async></script>
+{{ else if .Site.Params.weii.comment.commentjs.enable }}
+<script type="text/javascript">
+    $.ajax({
+        url: 'https://api.github.com/repos/{{- .Site.Params.weii.comment.commentjs.user -}}/{{- .Site.Params.weii.comment.commentjs.repo -}}/issues?client_id={{- .Site.Params.weii.comment.commentjs.client_id -}}&client_secret={{- .Site.Params.weii.comment.commentjs.client_secret -}}',
+        dataType: 'json',
+        cache: false,
+        crossDomain: true,
+        success: function success(page_comments) {
+            for (var i = 0; i < page_comments.length; ++i) {
+                $("#" + page_comments[i].title).text(page_comments[i].comments + 1)
+            }
+        }
+    });
+</script>
+{{ else if .Site.Params.weii.comment.utterances.enable }}
+<script type="text/javascript">
+    function getIssuesComments(s,a) {
+        console.log("s:",s,a)
+        $.ajax({
+        url: 'https://api.github.com/search/issues?q='+s+'type:issue in:title repo:{{- .Site.Params.weii.comment.utterances.user -}}/{{- .Site.Params.weii.comment.utterances.repo -}}&sort=created&order=asc&client_id={{- .Site.Params.weii.comment.utterances.client_id -}}&client_secret={{- .Site.Params.weii.comment.utterances.client_secret -}}',
+        dataType: 'json',
+        cache: false,
+        crossDomain: true,
+        success: function success(page_comments) {
+            $("#" + a).text(page_comments.total_count)
+        }
+    });
+    }
+    {{ range $S.Paginator.Pages }}
+    getIssuesComments({{.Title}},{{ .UniqueID }})
+    {{ end }}
+</script>
+{{ else if .Site.Params.weii.comment.valine.enable }}
+<script type="text/javascript">
+</script>
+{{ end }}
 {{ end }}

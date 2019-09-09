@@ -94,7 +94,13 @@
     {{ end }}
 
     <title>
-        {{ if .IsHome }}{{ .Site.Params.Title }}{{ else }}{{ .Title }} &middot; {{ .Site.Params.Title }}{{ end }}
+        {{- if .IsHome -}}
+        {{- .Site.Params.Title -}}
+        {{- else if .IsPage -}}
+        {{- .Title -}}
+        {{- else -}}
+        {{- .Title -}} &middot; {{- .Site.Params.Title -}}
+        {{- end -}}
     </title>
 
     <!--header-js-->

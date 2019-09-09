@@ -67,6 +67,16 @@
     });
     </script>
 
+    {{ else if .Site.Params.weii.comment.utterances.enable }}
+
+    <script src="https://utteranc.es/client.js"
+        repo="{{ .Site.Params.weii.comment.utterances.user }}/{{ .Site.Params.weii.comment.utterances.repo }}"
+        issue-term="title"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+    </script>
+
     {{ else if .Site.Params.weii.comment.valine.enable }}
     valine
     {{ end }}

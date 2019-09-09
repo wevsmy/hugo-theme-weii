@@ -140,7 +140,7 @@ enableRobotsTXT = true
     icon_class = "iconfont iconheart"
 
 # 评论
-# Valine.
+# todo Valine
 # You can get your appid and appkey from https://leancloud.cn
 # more info please open https://valine.js.org
 [params.weii.comment]
@@ -149,14 +149,20 @@ enableRobotsTXT = true
     enable = false
     disqusShortname = "wevsmy"
 [params.weii.comment.commentjs]
-    enable = true
+    enable = false
     type = "github"
     user = "wevsmy"
     repo = "wevsmy.github.io"
     client_id = "ded8625909c20b7ae2f7"
     client_secret = "c9ba27c5047486b4e2e0f8c3001aae33bc15374a"
-[params.weii.comment.valine]
+[params.weii.comment.utterances]
     enable = true
+    user = "wevsmy"
+    repo = "wevsmy.github.io"
+    client_id = "ded8625909c20b7ae2f7"
+    client_secret = "c9ba27c5047486b4e2e0f8c3001aae33bc15374a"
+[params.weii.comment.valine]
+    enable = false
     appId = ""
     appKey = ""
     placeholder = " "
