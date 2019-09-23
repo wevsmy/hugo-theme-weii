@@ -10,59 +10,59 @@
         </div>
         <div class="post-meta">
 
-            <span class="post-date">
+            <span class="post-date" title="{{ .Lastmod.Format "2006.01.02" }} update" data-toggle="tooltip" data-placement="top">
                 <i class="iconfont iconcalendar-check"></i>
-                <span>{{ .Lastmod.Format "2006.01.02" }} update</span>
+                <span>{{ .Lastmod.Format "2006.01.02" }}</span>
             </span>
 
-            <span class="post-wordCount">
+            <span class="post-wordCount" title="{{ .FuzzyWordCount }} words" data-toggle="tooltip" data-placement="top">
                 <span class="post-meta-divider divider">|</span>
                 <i class="iconfont iconfile-word"></i>
-                <span>{{ .FuzzyWordCount }} words</span>
+                <span>{{ .FuzzyWordCount }}</span>
             </span>
 
-            <span class="post-readingTime">
+            <span class="post-readingTime" title="{{ .ReadingTime }} minute" data-toggle="tooltip" data-placement="top">
                 <span class="post-meta-divider divider">|</span>
                 <i class="iconfont iconField-time"></i>
-                <span>{{ .ReadingTime }} minute</span>
+                <span>{{ .ReadingTime }}</span>
             </span>
 
             {{ if .Site.Params.weii.comment.enable }}
             {{ if .Site.Params.weii.comment.disqus.enable }}
 
-            <span class="post-comment-count">
+            <span class="post-comment-count" title="comments" data-toggle="tooltip" data-placement="top">
                 <span class="post-meta-divider divider">|</span>
                 <i class="iconfont iconcomment"></i>
                 <span>
                     <a href="{{ .RelPermalink | relURL }}#comments" itemprop="discussionUrl">
                     <span class="post-comment-count disqus-comment-count" data-disqus-identifier="{{ .Title }}"
-                      itemprop="commentCount">comments</span>
+                      itemprop="commentCount"></span>
                     </a>
                 </span>
             </span>
 
             {{ else if .Site.Params.weii.comment.commentjs.enable }}
 
-            <span class="post-comment-count">
+            <span class="post-comment-count" title="comments" data-toggle="tooltip" data-placement="top">
                 <span class="post-meta-divider divider">|</span>
                 <i class="iconfont iconcomment"></i>
                 <span>
                     <a href="{{ .RelPermalink | relURL }}#comments">
                         <span class="post-comment-count">
-                            <span id="{{ .Title }}">0</span> comments
+                            <span id="{{ .Title }}">0</span>
                         </span>
                     </a>
                 </span>
             </span>
             {{ else if .Site.Params.weii.comment.utterances.enable }}
 
-            <span class="post-comment-count">
+            <span class="post-comment-count" title="comments" data-toggle="tooltip" data-placement="top">
                 <span class="post-meta-divider divider">|</span>
                 <i class="iconfont iconcomment"></i>
                 <span>
                     <a href="{{ .RelPermalink | relURL }}#comments">
                         <span class="post-comment-count">
-                            <span id="{{ .File.UniqueID }}">0</span> comments
+                            <span id="{{ .File.UniqueID }}">0</span>
                         </span>
                     </a>
                 </span>
@@ -70,13 +70,13 @@
 
             {{ else if .Site.Params.weii.comment.valine.enable }}
 
-            <span class="post-comment-count">
+            <span class="post-comment-count" title="comments" data-toggle="tooltip" data-placement="top">
                 <span class="post-meta-divider divider">|</span>
                 <i class="iconfont iconcomment"></i>
                 <span>
                     <a href="{{ .RelPermalink | relURL }}#comments" itemprop="discussionUrl">
                         <span class="post-comment-count">
-                            <span></span> comments
+                            <span></span>
                         </span>
                     </a>
                 </span>
