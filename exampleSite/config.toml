@@ -1,6 +1,6 @@
 # 主题配置
 theme = "weii"
-baseURL = "https://blog.weii.ink"
+baseURL = "https://www.weii.xyz"
 languageCode = "zh-cn"
 # 默认分页数量
 paginate = 10
@@ -127,6 +127,11 @@ enableRobotsTXT = true
     name = "wilson's blog"
     url = "https://blog.weii.ink"
     tip = "╮(╯▽╰)╭"
+    icon_class = "iconfont iconcode"
+[[params.weii.blogroll]]
+    name = "Symoon"
+    url = "https://simplerfroze.com"
+    tip = "O__O "
     icon_class = "iconfont iconcode"
 [[params.weii.blogroll]]
     name = "GitHub"
